@@ -1,3 +1,12 @@
+
+<p align="center">
+  <img
+    src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=700&size=35&duration=3000&pause=1000&color=00BFFF&background=00000000&center=true&vCenter=true&width=800&lines=JOHAM+ARAUJO+LIMA;DESENVOLVEDOR+EM+FORMA%C3%87%C3%83O"
+    alt="Joham Araujo Lima"
+  />
+</p>
+
+
 Olá! 👋 Seja bem-vindo ao meu GitHub!
 
 🎓 Estudante de Sistemas de Informação
