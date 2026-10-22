@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Aniversário Amiga</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    width:100vw;
+    overflow:hidden;
+    font-family:'Comic Sans MS', cursive, sans-serif;
+    background:linear-gradient(to bottom,#ffeb99,#add8e6,#ffc0cb);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Envelope */
+#envelope{
+    width:320px;
+    height:200px;
+    background:#ffc0cb;
+    position:relative;
+    cursor:pointer;
+    border:3px solid #ff69b4;
+    border-radius:10px;
+    animation:bounce 2s infinite;
+}
+
+#envelope::before,
+#envelope::after{
+    content:"";
+    position:absolute;
+    width:0;
+    height:0;
+    border-style:solid;
+}
+
+#envelope::before{
+    top:0;
+    left:0;
+    border-width:100px 160px 0 160px;
+    border-color:#ff69b4 transparent transparent transparent;
+}
+
+#envelope::after{
+    bottom:0;
+    left:0;
+    border-width:0 160px 100px 160px;
+    border-color:transparent transparent #ff69b4 transparent;
+}
+
+@keyframes bounce{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-15px);
+    }
+}
+
+/* Texto */
+#openText{
+    margin-top:20px;
+    font-size:2rem;
+    color:#333;
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    0%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.2);
+        color:#ff1493;
+    }
+    100%{
+        transform:scale(1);
+    }
+}
+
+/* Mensagem */
+#message{
+    display:none;
+    text-align:center;
+    max-width:900px;
+    width:90%;
+    font-size:1.5rem;
+    color:#333;
+    line-height:1.6;
+    animation:fadeIn 2s forwards;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:scale(.8);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* Corações */
+.heart{
+    position:absolute;
+    font-size:40px;
+    pointer-events:none;
+    animation:floatUp 3s linear forwards;
+}
+
+@keyframes floatUp{
+    0%{
+        transform:translateY(0) scale(1);
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-600px) scale(1.5);
+        opacity:0;
+    }
+}
+
+/* Coração gigante */
+#bigHeart{
+    display:none;
+    font-size:180px;
+    animation:pulseHeart 1.5s infinite;
+}
+
+@keyframes pulseHeart{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.2);
+    }
+}
+
+@media(max-width:600px){
+
+    #envelope{
+        width:250px;
+        height:160px;
+    }
+
+    #envelope::before{
+        border-width:80px 125px 0 125px;
+    }
+
+    #envelope::after{
+        border-width:0 125px 80px 125px;
+    }
+
+    #message{
+        font-size:1.2rem;
+    }
+
+    #bigHeart{
+        font-size:120px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_3b8b1b7b3b.mp3?filename=happy-day-113559.mp3" type="audio/mpeg">
+</audio>
+
+<div id="envelope"></div>
+
+<div id="openText">
+    💌 Abra o envelope 💌
+</div>
+
+<div id="message">
+    <strong>Feliz aniversário, amiga! ❤️</strong>
+    <br><br>
+
+    Hoje é um dia muito especial, e quero te desejar muita felicidade,
+    saúde, paz, amor e sucesso.
+
+    <br><br>
+
+    Que cada novo dia seja repleto de motivos para sorrir e que todos os
+    seus sonhos se realizem.
+
+    <br><br>
+
+    Você merece tudo de melhor que a vida pode oferecer. Aproveite muito
+    o seu dia e seja sempre essa pessoa incrível que ilumina a vida de quem
+    está ao seu redor. ✨
+
+    <br><br>
+
+    <strong>Com carinho, seu amigo Joham! 🌹</strong>
+</div>
+
+<div id="bigHeart">❤️</div>
+
+<script>
+const envelope = document.getElementById("envelope");
+const openText = document.getElementById("openText");
+const message = document.getElementById("message");
+const bigHeart = document.getElementById("bigHeart");
+const music = document.getElementById("music");
+
+envelope.addEventListener("click", () => {
+
+    envelope.style.display = "none";
+    openText.style.display = "none";
+
+    music.play();
+
+    for(let i = 0; i < 30; i++){
+
+        const heart = document.createElement("div");
+
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+
+        heart.style.left =
+            Math.random() * window.innerWidth + "px";
+
+        heart.style.top =
+            window.innerHeight + "px";
+
+        heart.style.animationDuration =
+            (2 + Math.random() * 2) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 4000);
+    }
+
+    setTimeout(() => {
+        message.style.display = "block";
+    }, 2000);
+
+    setTimeout(() => {
+        bigHeart.style.display = "block";
+    }, 5000);
+
+});
+</script>
+
+</body>
+</html>
